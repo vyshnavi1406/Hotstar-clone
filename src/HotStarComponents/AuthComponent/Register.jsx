@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react'
+import { toast } from 'react-toastify';
 import firebase from '../../firebase';
+import md5 from 'md5';
 import { Link } from "react-router-dom";
 import "./Auth-Styles.css";
 class Register extends Component {
@@ -20,11 +22,21 @@ handleSubmit = async (e) => {
         let { username, password, email } = this.state;
         e.preventDefault();
        //connecting firebase auth provider
-       let userData = firebase
+       let userData = await firebase
        .auth()
        .createUserWithEmailAndPassword(email,password);
+       userData.user.sendEmailVerification(); //firebase
+       let message = `A verifivation has been send to ${email} and please verify email adderss`
+       toast.success(message);
        console.log(userData);
-       
+
+       //update prfile includin user phot, photo number, id ahatever
+       await userData.user.updateProfile({
+        displayName: username,
+        photoURL:`https://www.gravatar.com/avatar/${md5(
+            userData.user.email
+        )}?d=identicon`,
+       });
        this.setState({
             username: "",
             pssword: "",
@@ -32,6 +44,7 @@ handleSubmit = async (e) => {
         });
     } catch (err) {
         console.error(err);
+        toast.error(err.message);
     }
     };
 
@@ -39,10 +52,10 @@ render() {
    let { username, password, email } = this.state;
         return ( 
             <Fragment>
-                <section className="loginBlock">
+                <section className="authBlock">
                 <section className="card col-md-4 mx-auto">
                     <article className="form-block">
-                        <h2>Register</h2>
+                        <h5 className="h5 font-weight-bold p-4">Register to continue</h5>
                         <div className="card-body">
                             <form onSubmit={this.handleSubmit}>
                             <div className="from-group">
@@ -75,12 +88,12 @@ render() {
                                 required/>
                             </div>
                             <div className="form-group">
-                            <button className="btn btn-block btn-primary">Login</button>
+                            <button className="btn btn-block btn-outline-primary">Register</button>
                             </div>
                                 <div className="form-group">
                                     <span>
                                         Already have an account Please
-                                        <Link to="/login" className="register-link">Register</Link>
+                                        <Link to="/login" className="register-link float-right">Register</Link>
                                     </span>
                                 </div>
                             </form>

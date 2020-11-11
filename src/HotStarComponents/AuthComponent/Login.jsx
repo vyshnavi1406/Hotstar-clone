@@ -9,10 +9,10 @@ class Login extends Component {
     render() { 
         return ( 
             <Fragment>
-                <section className="loginBlock">
+                <section className="authBlock">
                 <section className="card col-md-4 mx-auto">
                     <article className="form-block">
-                        <h2>Login</h2>
+                        <h5 className="h5 font-weight-bold p-4">Login to continue</h5>
                         <div className="card-body">
                             <from>
                             <div className="from-group">
@@ -25,7 +25,7 @@ class Login extends Component {
                                 <input type="text" className="form-control" name="password" required/>
                             </div>
                             <div className="form-group">
-                            <button className="btn btn-block btn-primary">Login</button>
+                            <button className="btn btn-block btn-outline-primary">Login</button>
                             </div>
                                 <div className="form-group">
                                     <span>
