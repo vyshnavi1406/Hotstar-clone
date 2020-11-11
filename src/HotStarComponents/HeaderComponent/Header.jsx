@@ -1,4 +1,5 @@
 import React, { Component , Fragment } from 'react'
+import { Link } from "react-router-dom";
 import "./HeaderStyles.css";
 class HeaderComponent extends Component {
     constructor(props) {
@@ -64,15 +65,15 @@ class HeaderComponent extends Component {
                 }} 
                 ></i></span>
             </li>
-            <li className="nav-item">
+            <li className="nav- item">
               <a className="nav-link subscribe-block" href="/">
                 subscribe
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-uppercase" href="/">
+              <Link className="nav-link text-uppercase" to="/login">
                 Login
-              </a>
+              </Link>
             </li>
           </ul>
           
