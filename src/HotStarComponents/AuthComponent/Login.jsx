@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react'
+import { Link } from "react-router-dom";
+import "./Auth-Styles.css";
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -7,6 +9,7 @@ class Login extends Component {
     render() { 
         return ( 
             <Fragment>
+                <section className="loginBlock">
                 <section className="card col-md-4 mx-auto">
                     <article className="form-block">
                         <h2>Login</h2>
@@ -24,10 +27,16 @@ class Login extends Component {
                             <div className="form-group">
                             <button className="btn btn-block btn-primary">Login</button>
                             </div>
-
+                                <div className="form-group">
+                                    <span>
+                                        Don't have an account Please
+                                        <Link to="/register" className="register-link">Register</Link>
+                                    </span>
+                                </div>
                             </from>
                         </div>
                     </article>
+                </section>
                 </section>
             </Fragment>
          );
