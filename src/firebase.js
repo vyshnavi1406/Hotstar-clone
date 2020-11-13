@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 
 import "firebase/auth";//auth
-import "firebase/database";//database can link sql,mongodb
+import "firebase/database";//database can link sql,mongodb //ffirebase is no sql type
 import "firebase/storage";//storage //images, videos, photos,pdf,fonts
 
 const firebaseConfig = {
