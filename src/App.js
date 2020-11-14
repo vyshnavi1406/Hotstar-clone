@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Login from "./HotStarComponents/AuthComponent/Login";
 import Register from "./HotStarComponents/AuthComponent/Register";
 import HeaderComponent from "./HotStarComponents/HeaderComponent/Header";
+import LifeCycle from './HotStarComponents/LifeCycleMethods/LifeCycle';
 class App extends Component {
     constructor(props){
         super(props);
@@ -16,6 +17,7 @@ class App extends Component {
         return ( <Fragment>
             <header>
                 <HeaderComponent/>
+                <LifeCycle/>
             </header>
             <main>
                 <ToastContainer/>
